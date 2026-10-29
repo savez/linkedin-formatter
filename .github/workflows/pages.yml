@@ -1,0 +1,77 @@
+# Pubblica su GitHub Pages (linkedinformatter.smzstudio.it):
+#   /      la landing, dalla cartella landing/ di questo branch
+#   /app/  la PWA, costruita dal codice dell'ultima release di main
+#
+# Il branch `landing` non va MAI unito a `main`: la CI di main blocca le PR da qui.
+name: Deploy landing su GitHub Pages
+
+on:
+  push:
+    branches: [landing]
+  # Avviato anche dal workflow Release di main dopo ogni rilascio, per aggiornare app e versione.
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout della landing
+        uses: actions/checkout@v7
+
+      # Ultima release pubblicata; se non ce n'è ancora nessuna, il codice di main.
+      - name: Scegli la versione dell'app
+        id: app
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName 2>/dev/null || true)
+          echo "ref=${TAG:-main}" >> "$GITHUB_OUTPUT"
+          echo "App da: ${TAG:-main}"
+
+      - name: Checkout dell'app
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.app.outputs.ref }}
+          path: app-src
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Build della PWA
+        run: node app-src/scripts/build.mjs --no-zip
+
+      - name: Componi il sito
+        run: |
+          VERSION=$(node -p "require('./app-src/package.json').version")
+          mkdir _site
+          cp -R landing/. _site/
+          cp -R app-src/dist/pwa _site/app
+          sed -i "s/__VERSION__/$VERSION/g" _site/index.html
+          echo "Landing con app v$VERSION"
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Pubblica su GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

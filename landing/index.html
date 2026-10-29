@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LinkedinFormatter: grassetto e corsivo nei post LinkedIn</title>
+<meta name="description" content="Scrivi in markup, incolla su LinkedIn: grassetto, corsivo, sottolineato ed elenchi con i caratteri Unicode. PWA offline ed estensioni per Chrome e Firefox. Gratis e open source.">
+<meta name="theme-color" content="#2F5D50">
+<link rel="canonical" href="https://linkedinformatter.smzstudio.it/">
+<link rel="icon" href="img/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LinkedinFormatter">
+<meta property="og:description" content="Grassetto, corsivo ed elenchi nei post LinkedIn. Offline, gratis, open source.">
+<meta property="og:url" content="https://linkedinformatter.smzstudio.it/">
+<meta property="og:image" content="https://linkedinformatter.smzstudio.it/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#prova">Vai alla prova</a>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="LinkedinFormatter, inizio pagina">
+      <img src="img/icon-192.png" alt="" width="32" height="32">
+      <span>LinkedinFormatter</span>
+    </a>
+    <nav aria-label="Sezioni">
+      <a href="#markup">Markup</a>
+      <a href="#installa">Installa</a>
+      <a href="#open-source">Open source</a>
+    </nav>
+    <a class="btn btn-solid btn-small" href="app/">Apri l'app</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero container">
+    <div class="hero-copy">
+      <h1>Scrivi in markup.<br>Incolla su LinkedIn.</h1>
+      <p class="lead">
+        LinkedIn non ha il grassetto. LinkedinFormatter lo ottiene con i caratteri Unicode:
+        scrivi <code>**così**</code> e il post arriva 𝗰𝗼𝘀𝗶̀, con corsivo, sottolineato ed elenchi.
+      </p>
+      <div class="actions">
+        <a class="btn btn-solid" href="app/">Apri l'app nel browser</a>
+        <a class="btn btn-line" href="#installa">Installa l'estensione</a>
+      </div>
+      <p class="fine">Gratis, open source, funziona offline. Il testo non lascia il tuo dispositivo.</p>
+    </div>
+
+    <div class="demo" id="prova" aria-label="Prova dal vivo">
+      <label class="demo-pane demo-in">
+        <span class="demo-label">Tu scrivi</span>
+        <textarea id="demo-input" spellcheck="false" rows="9">**3 cose che ho imparato** lanciando un progetto open source
+
+- *rilasciare* presto, anche se non è perfetto
+- ++ascoltare++ chi lo usa davvero
+- documentare ~~dopo~~ subito
+
+Il codice è qui: https://github.com/savez/linkedin-formatter #opensource</textarea>
+      </label>
+      <div class="demo-pane demo-out">
+        <div class="demo-head">
+          <span class="demo-label">Su LinkedIn arriva</span>
+          <button type="button" class="btn btn-solid btn-small" id="demo-copy">Copia</button>
+        </div>
+        <pre id="demo-output" aria-live="polite"></pre>
+        <span class="demo-count" id="demo-count"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="markup" aria-labelledby="markup-title">
+    <div class="container">
+      <h2 id="markup-title">Il markup che usi già</h2>
+      <p class="section-sub">
+        Gli stessi segni di Markdown, di Slack e di qualsiasi chatbot. Copia un testo scritto
+        da un LLM e arriva formattato.
+      </p>
+      <table class="cheat">
+        <thead>
+          <tr><th scope="col">Scrivi</th><th scope="col">Ottieni</th><th scope="col">Quando usarlo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>**testo**</code></td><td class="res">𝘁𝗲𝘀𝘁𝗼</td><td>Il gancio della prima riga, due o tre parole chiave</td></tr>
+          <tr><td><code>*testo*</code></td><td class="res">𝘵𝘦𝘴𝘵𝘰</td><td>Titoli di libri, citazioni, enfasi leggera</td></tr>
+          <tr><td><code>++testo++</code></td><td class="res">t̲e̲s̲t̲o̲</td><td>Una parola da non perdere</td></tr>
+          <tr><td><code>~~testo~~</code></td><td class="res">t̶e̶s̶t̶o̶</td><td>Correzioni ironiche</td></tr>
+          <tr><td><code>`testo`</code></td><td class="res">𝚝𝚎𝚜𝚝𝚘</td><td>Comandi, nomi di file, codice</td></tr>
+          <tr><td><code>- punto</code></td><td class="res">• punto</td><td>Elenchi leggibili da telefono</td></tr>
+          <tr><td><code>- [x] fatto</code></td><td class="res">✅ fatto</td><td>Checklist e traguardi</td></tr>
+          <tr><td><code>---</code></td><td class="res">━━━━━━━━━━</td><td>Separare le parti di un post lungo</td></tr>
+        </tbody>
+      </table>
+      <ul class="notes">
+        <li><strong>Link, #hashtag e @menzioni restano cliccabili</strong>, anche dentro un grassetto: il formatter non li tocca.</li>
+        <li><strong>Le lettere accentate funzionano.</strong> À, è, é diventano grassetto come le altre.</li>
+        <li><strong>22 stili su tutto il testo</strong>, dal calligrafico al doppio tratto, più elenchi numerati e ordinamento delle righe.</li>
+        <li><strong>Usalo con misura.</strong> LinkedIn non indicizza il testo formattato e i lettori di schermo lo leggono male: formatta poche parole, non paragrafi.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="installa" aria-labelledby="installa-title">
+    <div class="container">
+      <h2 id="installa-title">Dove usarlo</h2>
+      <p class="section-sub">Stesso codice, tre forme. Scegli quella che ti è più comoda.</p>
+      <div class="ways">
+        <article class="way">
+          <h3>Nel browser e sul telefono</h3>
+          <p>Apri l'app e installala dal menu del browser: <em>Installa</em> su Chrome ed Edge, <em>Aggiungi alla schermata Home</em> su iPhone. Poi funziona anche senza rete.</p>
+          <p class="hint">Su Android compare nel menu Condividi: mandi un testo da qualsiasi app e si apre già compilata.</p>
+          <a class="btn btn-solid" href="app/">Apri l'app</a>
+        </article>
+        <article class="way">
+          <h3>Estensione per Chrome, Edge e Brave</h3>
+          <p>Un clic sull'icona nella barra per scrivere, oppure seleziona un testo in qualsiasi pagina e scegli <em>Formatta per LinkedIn</em> dal clic destro.</p>
+          <p class="hint">Si carica in modalità sviluppatore da <code>chrome://extensions</code>.</p>
+          <a class="btn btn-line" href="https://github.com/savez/linkedin-formatter/releases/latest/download/linkedin-formatter-chrome.zip">Scarica per Chrome</a>
+        </article>
+        <article class="way">
+          <h3>Estensione per Firefox</h3>
+          <p>Le stesse funzioni dell'estensione per Chrome, su Firefox 142 o successivo.</p>
+          <p class="hint">Si carica da <code>about:debugging</code> come componente aggiuntivo temporaneo.</p>
+          <a class="btn btn-line" href="https://github.com/savez/linkedin-formatter/releases/latest/download/linkedin-formatter-firefox.zip">Scarica per Firefox</a>
+        </article>
+      </div>
+      <p class="more">
+        Le estensioni non sono ancora negli store.
+        <a href="https://github.com/savez/linkedin-formatter/blob/main/docs/INSTALLAZIONE.md" rel="noopener noreferrer" target="_blank">Guida all'installazione passo per passo</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="open-source" aria-labelledby="os-title">
+    <div class="container os">
+      <div>
+        <h2 id="os-title">Leggi il codice, proponi modifiche</h2>
+        <p class="section-sub">
+          Licenza MIT, nessuna dipendenza, nessun server. La formattazione è un file JavaScript
+          di poche centinaia di righe che puoi leggere in dieci minuti.
+          <a href="https://github.com/savez/linkedin-formatter/blob/main/CONTRIBUTING.md" rel="noopener noreferrer" target="_blank">Come contribuire</a>
+        </p>
+        <p class="author">
+          <img src="img/progetti/savez.jpg" alt="" width="44" height="44" loading="lazy">
+          <span>Scritto e mantenuto da <a href="https://github.com/savez" rel="noopener noreferrer" target="_blank">@savez</a>.</span>
+        </p>
+      </div>
+      <ul class="facts">
+        <li><strong>0</strong> richieste di rete per formattare</li>
+        <li><strong>0</strong> account e cookie</li>
+        <li><strong>1</strong> permesso per l'estensione, il menu del clic destro</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section support-row container" aria-label="Newsletter e sostegno">
+    <a class="card-news" href="https://smzstudio.substack.com/subscribe" rel="noopener noreferrer" target="_blank">
+      <span class="news-mark" aria-hidden="true">**</span>
+      <span class="card-kicker">La newsletter di @savez, su Substack</span>
+      <span class="card-title">SMZstudio, senza formattazione superflua.</span>
+      <span class="card-text">
+        Racconto come nascono LinkedinFormatter e gli altri progetti, e quello che imparo
+        strada facendo: cloud, AI e codice, senza fronzoli.
+      </span>
+      <span class="card-foot">
+        <span class="card-url">smzstudio.substack.com</span>
+        <span class="pill pill-news">Iscriviti gratis</span>
+      </span>
+    </a>
+
+    <div class="card-beer">
+      <span class="beer-seal" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 10h12v15a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2V10Z" fill="currentColor" fill-opacity=".35"/>
+          <path d="M20 13h2.5a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H20"/>
+          <path d="M8 10c0-2.5 1.5-4 3.5-4 .8-1.3 2-2 3.5-2s2.7.7 3.5 2c1.2.3 1.5 1.5 1.5 4"/>
+        </svg>
+      </span>
+      <span class="card-kicker">Un progetto indipendente di @savez</span>
+      <h2 class="card-title">Offrimi una birra.</h2>
+      <p class="card-text">
+        LinkedinFormatter è gratis, open source e senza pubblicità: lo sviluppo nel tempo libero.
+        Se ti ha fatto risparmiare tempo, una birra aiuta.
+      </p>
+      <a class="pill pill-beer" href="https://buymeacoffee.com/goeokwihgz" rel="noopener noreferrer" target="_blank">Offrimi una birra</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="about">
+        <a href="#top" class="brand">
+          <img src="img/icon-192.png" alt="" width="28" height="28">
+          <span>LinkedinFormatter</span>
+        </a>
+        <p>Il testo resta nel tuo browser. Nessun account, nessun server, nessun tracciamento.</p>
+      </div>
+      <nav aria-labelledby="foot-progetto">
+        <h2 id="foot-progetto">Progetto</h2>
+        <ul>
+          <li><a href="https://github.com/savez/linkedin-formatter" rel="noopener noreferrer" target="_blank">Codice sorgente</a></li>
+          <li><a href="https://github.com/savez/linkedin-formatter/releases" rel="noopener noreferrer" target="_blank">Novità</a></li>
+          <li><a href="https://github.com/savez/linkedin-formatter/blob/main/CONTRIBUTING.md" rel="noopener noreferrer" target="_blank">Contribuire</a></li>
+          <li><a href="https://github.com/savez/linkedin-formatter/issues/new/choose" rel="noopener noreferrer" target="_blank">Segnala un problema</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="foot-sostieni">
+        <h2 id="foot-sostieni">Sostieni</h2>
+        <ul>
+          <li><a href="https://buymeacoffee.com/goeokwihgz" rel="noopener noreferrer" target="_blank">Offrimi una birra</a></li>
+          <li><a href="https://smzstudio.substack.com/subscribe" rel="noopener noreferrer" target="_blank">Iscriviti alla newsletter</a></li>
+          <li><a href="https://github.com/savez/linkedin-formatter/stargazers" rel="noopener noreferrer" target="_blank">Metti una stella</a></li>
+          <li><a href="https://github.com/savez/linkedin-formatter/blob/main/SECURITY.md" rel="noopener noreferrer" target="_blank">Segnala una vulnerabilità</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="signature">
+      <a class="author-card" href="https://github.com/savez" rel="noopener noreferrer" target="_blank">
+        <img src="img/progetti/savez.jpg" alt="" width="48" height="48" loading="lazy">
+        <span><strong>@savez</strong><span>Autore e contributor principale</span></span>
+      </a>
+      <div class="others">
+        <p>Altri progetti di @savez</p>
+        <ul>
+          <li><a href="https://nonabbocco.smzstudio.it/" rel="noopener noreferrer" target="_blank">
+            <img src="img/progetti/nonabbocco.png" alt="" width="28" height="28" loading="lazy">
+            <span><strong>NonAbbocco</strong><span>Ti avvisa quando un indirizzo imita un sito vero.</span></span>
+          </a></li>
+          <li><a href="https://bacco.smzstudio.it/" rel="noopener noreferrer" target="_blank">
+            <img src="img/progetti/bacco.svg" alt="" width="28" height="28" loading="lazy">
+            <span><strong>Bacco</strong><span>Il diario dei vini e delle birre che bevi.</span></span>
+          </a></li>
+          <li><a href="https://fidality-card.smzstudio.it/" rel="noopener noreferrer" target="_blank">
+            <img src="img/progetti/fidelity-card.svg" alt="" width="28" height="28" loading="lazy">
+            <span><strong>Fidelity Card</strong><span>Le tessere fedeltà, sul telefono.</span></span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="legal">
+      <span>LinkedinFormatter v__VERSION__, rilasciato con licenza MIT.</span>
+      <span>Progetto indipendente, non affiliato a LinkedIn Corporation.</span>
+    </p>
+  </div>
+</footer>
+
+<script src="app/formatter.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
