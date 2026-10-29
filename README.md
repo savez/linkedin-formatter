@@ -2,7 +2,7 @@
 
 <img src="src/icons/icon-192.png" width="96" height="96" alt="">
 
-# 𝗧𝗲𝘀𝘁𝗼 𝗽𝗲𝗿 𝗟𝗶𝗻𝗸𝗲𝗱𝗜𝗻
+# 𝗟𝗶𝗻𝗸𝗲𝗱𝗶𝗻𝗙𝗼𝗿𝗺𝗮𝘁𝘁𝗲𝗿
 
 **Grassetto, corsivo, sottolineato ed elenchi nei post LinkedIn.**
 Scrivi in markup, copia, incolla. Funziona offline, non invia niente a nessuno.
@@ -48,7 +48,7 @@ a ogni rilascio, quindi si comportano in modo identico.
 - **Le lettere accentate funzionano**: à è é ì ò ù diventano grassetto come le altre.
 - **Togli formattazione**: incolli un vecchio post e torna testo semplice da modificare.
 - **Scorciatoie**: <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>B</kbd> <kbd>I</kbd> <kbd>U</kbd> sulla selezione.
-- **Condividi verso l'app** (Android): da qualsiasi app, *Condividi → Testo LinkedIn*.
+- **Condividi verso l'app** (Android): da qualsiasi app, *Condividi → LinkedinFormatter*.
 - **Privacy totale**: nessun server, nessun tracciamento, nessuna dipendenza esterna.
   La bozza resta nel tuo browser.
 

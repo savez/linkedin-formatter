@@ -1,6 +1,6 @@
 {
-  "name": "Testo per LinkedIn",
-  "short_name": "Testo LinkedIn",
+  "name": "LinkedinFormatter",
+  "short_name": "LinkedinFormatter",
   "description": "Formatta il testo dei post LinkedIn con grassetto, corsivo, sottolineato ed elenchi.",
   "lang": "it",
   "start_url": "./",

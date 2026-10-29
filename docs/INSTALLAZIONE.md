@@ -29,7 +29,7 @@ LinkedIn* del clic destro. Non legge le pagine che visiti e non fa richieste di 
 4. Attiva **Modalità sviluppatore** (interruttore in alto a destra; in Edge è nella barra a sinistra).
 5. Clicca **Carica estensione non pacchettizzata** e seleziona la cartella estratta
    (quella che contiene `manifest.json`).
-6. Clicca l'icona del puzzle 🧩 nella barra e fissa *Testo per LinkedIn* con la puntina.
+6. Clicca l'icona del puzzle 🧩 nella barra e fissa *LinkedinFormatter* con la puntina.
 
 > [!NOTE]
 > All'avvio Chrome può mostrare l'avviso *"Disattiva le estensioni in modalità

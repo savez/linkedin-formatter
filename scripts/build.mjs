@@ -55,13 +55,13 @@ const icons = { 16: 'icons/icon-16.png', 32: 'icons/icon-32.png', 48: 'icons/ico
 
 const baseManifest = {
   manifest_version: 3,
-  name: 'Testo per LinkedIn',
-  short_name: 'Testo LinkedIn',
+  name: 'LinkedinFormatter',
+  short_name: 'LinkedinFormatter',
   version: extVersion,
   description: 'Formatta i post LinkedIn con grassetto, corsivo, sottolineato ed elenchi in Unicode. Tutto in locale, nessun dato inviato.',
   homepage_url: 'https://github.com/savez/linkedin-formatter',
   icons,
-  action: { default_title: 'Testo per LinkedIn', default_popup: 'popup.html', default_icon: icons },
+  action: { default_title: 'LinkedinFormatter', default_popup: 'popup.html', default_icon: icons },
   permissions: ['contextMenus']
 };
 
