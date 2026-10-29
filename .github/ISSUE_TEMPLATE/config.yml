@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔒 Vulnerabilità di sicurezza
+    url: https://github.com/savez/linkedin-formatter/security/advisories/new
+    about: Segnalala in privato, non con una issue pubblica.
+  - name: 📖 Guida all'installazione
+    url: https://github.com/savez/linkedin-formatter/blob/main/docs/INSTALLAZIONE.md
+    about: Passaggi e problemi frequenti per installare le estensioni.

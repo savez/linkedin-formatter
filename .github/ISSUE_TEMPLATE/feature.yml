@@ -1,0 +1,22 @@
+name: ✨ Idea o richiesta
+description: Proponi una nuova funzione o un miglioramento
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: Che problema risolve
+      description: Cosa vorresti fare e oggi non riesci a fare?
+    validations:
+      required: true
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Come te lo immagini
+      description: Esempio di markup, schizzo dell'interfaccia, link a un tool che lo fa già…
+  - type: checkboxes
+    id: contributo
+    attributes:
+      label: Contributo
+      options:
+        - label: Mi piacerebbe provare a implementarla io

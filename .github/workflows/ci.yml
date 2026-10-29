@@ -1,0 +1,43 @@
+# CI: test, build e lint su ogni push e pull request.
+# Gli zip di PWA, Chrome e Firefox si scaricano dalla pagina della run (sezione "Artifacts").
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Test
+        run: npm test
+
+      - name: Build PWA ed estensioni
+        run: npm run build -- --no-zip
+
+      - name: Lint estensione Firefox
+        run: npm run lint:firefox
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: linkedin-formatter-chrome
+          path: dist/chrome
+      - uses: actions/upload-artifact@v7
+        with:
+          name: linkedin-formatter-firefox
+          path: dist/firefox
+      - uses: actions/upload-artifact@v7
+        with:
+          name: linkedin-formatter-pwa
+          path: dist/pwa

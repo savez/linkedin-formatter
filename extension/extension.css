@@ -1,0 +1,13 @@
+/* extension.css — adattamenti per il popup (Chrome lo limita a 800×600 px). */
+html.popup body { width: 760px; }
+html.popup .wrap { padding: 16px 14px 24px; }
+html.popup header { margin-bottom: 14px; align-items: center; }
+html.popup h1 { font-size: 1.35rem; }
+html.popup header p { font-size: .9rem; }
+html.popup .work { grid-template-columns: 1fr 1fr; gap: 12px; }
+html.popup .pane { min-height: 300px; }
+html.popup .specimen { margin-top: 28px; }
+html.popup .rows li { grid-template-columns: 9rem 1fr auto; }
+html.popup details { margin-top: 24px; }
+html.popup header { flex-wrap: nowrap; }
+html.popup .ext-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }

@@ -1,0 +1,23 @@
+{
+  "name": "linkedin-formatter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Formatta i post LinkedIn con grassetto, corsivo ed elenchi Unicode. PWA offline + estensioni Chrome e Firefox.",
+  "license": "MIT",
+  "author": "Saverio Menin",
+  "homepage": "https://github.com/savez/linkedin-formatter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savez/linkedin-formatter.git"
+  },
+  "bugs": "https://github.com/savez/linkedin-formatter/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "build": "node scripts/build.mjs",
+    "lint:firefox": "npx --yes web-ext@10 lint --source-dir dist/firefox",
+    "start": "npx --yes serve@14 src -l 5173"
+  }
+}

@@ -1,0 +1,35 @@
+name: 🐛 Bug
+description: Qualcosa non funziona come dovrebbe
+labels: [bug]
+body:
+  - type: dropdown
+    id: componente
+    attributes:
+      label: Dove succede
+      options:
+        - PWA / sito
+        - Estensione Chrome (o Edge, Brave…)
+        - Estensione Firefox
+        - Tutte
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Testo di partenza
+      description: Il markup o il testo che hai scritto. Togli eventuali dati personali.
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: atteso
+    attributes:
+      label: Cosa ti aspettavi e cosa è successo
+      description: Uno screenshot aiuta, soprattutto se il problema si vede su LinkedIn.
+    validations:
+      required: true
+  - type: input
+    id: versione
+    attributes:
+      label: Versione e browser
+      placeholder: "es. 1.2.0 su Chrome 141, macOS"

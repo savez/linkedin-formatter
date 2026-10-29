@@ -1,0 +1,73 @@
+# Rilasci: release-please legge i Conventional Commits su main e tiene aperta una
+# "release PR" con versione e CHANGELOG. Quando la PR viene unita crea tag e release,
+# poi il job "assets" costruisce PWA ed estensioni e le allega alla release.
+#
+# Il build sta in questo stesso workflow perché le release create con GITHUB_TOKEN
+# non avviano altri workflow (un `on: release` non partirebbe mai).
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@v5
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  assets:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ needs.release-please.outputs.tag_name }}
+      GH_TOKEN: ${{ github.token }}
+      # Facoltativi: chiavi API di addons.mozilla.org per firmare l'estensione Firefox.
+      AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+      AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.TAG }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Test
+        run: npm test
+
+      - name: Build PWA ed estensioni
+        run: npm run build
+
+      - name: Lint estensione Firefox
+        run: npm run lint:firefox
+
+      # Firefox installa in modo permanente solo estensioni firmate da Mozilla.
+      # Con i secret AMO_JWT_* configurati, firma come "unlisted" (non pubblicata
+      # sullo store) e allega anche il file .xpi installabile con un clic.
+      - name: Firma estensione Firefox (se configurata)
+        if: env.AMO_JWT_ISSUER != '' && env.AMO_JWT_SECRET != ''
+        run: |
+          npx --yes web-ext@10 sign \
+            --source-dir dist/firefox \
+            --artifacts-dir dist/signed \
+            --channel unlisted \
+            --api-key "$AMO_JWT_ISSUER" \
+            --api-secret "$AMO_JWT_SECRET"
+          mv dist/signed/*.xpi dist/linkedin-formatter-firefox.xpi
+
+      - name: Allega gli artefatti alla release
+        run: gh release upload "$TAG" dist/*.zip $(ls dist/*.xpi 2>/dev/null) --clobber
