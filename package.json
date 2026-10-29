@@ -1,6 +1,6 @@
 {
   "name": "linkedin-formatter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Formatta i post LinkedIn con grassetto, corsivo ed elenchi Unicode. PWA offline + estensioni Chrome e Firefox.",
   "license": "MIT",
