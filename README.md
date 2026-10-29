@@ -8,9 +8,7 @@
 Scrivi in markup, copia, incolla. Funziona offline, non invia niente a nessuno.
 
 [![CI](https://github.com/savez/linkedin-formatter/actions/workflows/ci.yml/badge.svg)](https://github.com/savez/linkedin-formatter/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/savez/linkedin-formatter?label=release&color=2F5D50)](https://github.com/savez/linkedin-formatter/releases/latest)
 [![Licenza: MIT](https://img.shields.io/badge/licenza-MIT-2F5D50)](LICENSE)
-[![PR benvenute](https://img.shields.io/badge/PR-benvenute-7FBFA8)](CONTRIBUTING.md)
 
 [**Chrome / Edge**](https://github.com/savez/linkedin-formatter/releases/latest/download/linkedin-formatter-chrome.zip) ·
 [**Firefox**](https://github.com/savez/linkedin-formatter/releases/latest/download/linkedin-formatter-firefox.zip) ·
