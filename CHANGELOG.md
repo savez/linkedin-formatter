@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/savez/linkedin-formatter/compare/v1.0.0...v1.0.1) (2026-10-29)
+
+
+### Documentazione
+
+* rimuovi i badge release e PR dal README ([#2](https://github.com/savez/linkedin-formatter/issues/2)) ([ea65e03](https://github.com/savez/linkedin-formatter/commit/ea65e0391f21116acb6ae3efb26a8058ffacebc3))
+
 ## 1.0.0 (2026-10-29)
 
 
