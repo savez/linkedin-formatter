@@ -50,6 +50,14 @@ Regole che tengono in piedi il progetto:
   [savez/my-skills](https://github.com/savez/my-skills), o segnalalo nella PR.
 - **L'interfaccia è in italiano.**
 
+## La landing page
+
+Il sito [linkedinformatter.smzstudio.it](https://linkedinformatter.smzstudio.it) vive
+nel branch `landing`, che non ha storia in comune con `main` e **non va mai unito**:
+la CI blocca le PR da `landing` verso `main`. Le modifiche alla landing si propongono
+con una PR verso `landing`, che solo il maintainer può unire. La PWA pubblicata in
+`/app/` invece viene sempre da `main`.
+
 ## Commit: Conventional Commits
 
 I rilasci sono automatici: [release-please](https://github.com/googleapis/release-please)
