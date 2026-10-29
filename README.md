@@ -12,6 +12,7 @@ Scrivi in markup, copia, incolla. Funziona offline, non invia niente a nessuno.
 [![Licenza: MIT](https://img.shields.io/badge/licenza-MIT-2F5D50)](LICENSE)
 [![PR benvenute](https://img.shields.io/badge/PR-benvenute-7FBFA8)](CONTRIBUTING.md)
 
+[**Apri l'app**](https://linkedinformatter.smzstudio.it/app/) ·
 [**Chrome / Edge**](https://github.com/savez/linkedin-formatter/releases/latest/download/linkedin-formatter-chrome.zip) ·
 [**Firefox**](https://github.com/savez/linkedin-formatter/releases/latest/download/linkedin-formatter-firefox.zip) ·
 [**Come si installano**](docs/INSTALLAZIONE.md) ·
@@ -75,9 +76,10 @@ Firefox e l'installazione resta.
 
 ### PWA
 
-Apri l'app nel browser e scegli *Installa* (Chrome/Edge) o *Aggiungi alla schermata
-Home* (Safari, iOS). Serve HTTPS: per pubblicarla sul tuo dominio usa
-`linkedin-formatter-pwa.zip` della release, è un sito statico.
+Apri [linkedinformatter.smzstudio.it/app](https://linkedinformatter.smzstudio.it/app/)
+e scegli *Installa* (Chrome/Edge) o *Aggiungi alla schermata Home* (Safari, iOS).
+Per pubblicarla sul tuo dominio usa `linkedin-formatter-pwa.zip` della release:
+è un sito statico, serve solo HTTPS.
 
 ## ✍️ Il markup
 
