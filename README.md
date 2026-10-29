@@ -3,6 +3,10 @@
 > ⚠️ **Questo branch non va MAI unito a `main`.** Non ha storia in comune con `main`
 > e la CI di `main` fa fallire qualsiasi PR che parte da qui.
 
+> Solo il maintainer (@savez) può aggiornare questo branch: un ruleset blocca push,
+> merge di PR, force push e cancellazione per tutti tranne gli admin del repo.
+> Si possono comunque proporre modifiche con una PR verso `landing`.
+
 Contiene solo il sito pubblicato su **https://linkedinformatter.smzstudio.it**:
 
 | Percorso | Cosa | Da dove arriva |
